@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Scroll Reveal Animation
     // ============================================
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.05,
         rootMargin: '0px 0px -50px 0px'
     };
     
@@ -525,19 +525,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         lazyImages.forEach(img => imageObserver.observe(img));
     }
-    
-    // ============================================
-    // Parallax Effect (optional)
-    // ============================================
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.hero-video');
-        
-        parallaxElements.forEach(el => {
-            const speed = 0.5;
-            el.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
     
     // ============================================
     // Performance: Debounce scroll events
