@@ -17,7 +17,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=block" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -53,7 +53,7 @@
                     </div>
                     <a href="tel:+79991234567" class="header-phone">+7 (999) 123-45-67</a>
                 </div>
-                <a href="#contacts" class="btn btn-primary">Обсудить проект</a>
+                <button class="btn btn-primary" data-modal="orderModal">Обсудить проект</button>
                 <button class="burger" aria-label="Меню">
                     <span></span>
                     <span></span>
@@ -76,7 +76,7 @@
                     </p>
                     <div class="hero-cta">
                         <a href="#portfolio" class="btn btn-secondary">Смотреть кейсы</a>
-                        <a href="#contacts" class="btn btn-primary">Обсудить проект</a>
+                        <button class="btn btn-primary" data-modal="orderModal">Обсудить проект</button>
                     </div>
                     <div class="hero-stats fade-in">
                         <div class="stat-item">
@@ -115,7 +115,7 @@
                         <div class="service-left">
                             <h3 class="service-title">Сайт под ключ</h3>
                             <div class="service-price">
-                                <span class="price">от 40 000₽</span>
+                                <span class="price">от <span class="price-number">40 000</span>₽</span>
                                 <span class="service-duration">1,5-3 недели</span>
                             </div>
                         </div>
@@ -129,7 +129,6 @@
                             </svg>
                             <div>
                                 <h4>Домен и хостинг в подарок!</h4>
-                                <p>Мы не берем дополнительные средства за домен, хостинг и их подключение!</p>
                             </div>
                         </div>
 
@@ -139,8 +138,7 @@
                                 <path d="M12 6V12L16 14" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                             <div>
-                                <h4>Защита для сайта</h4>
-                                <p>Мы шифруем все сайты с помощью SSL сертификата и добавляем HTTPS на сайт!</p>
+                                <h4>SSL защита сайта</h4>
                             </div>
                         </div>
 
@@ -149,8 +147,7 @@
                                 <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <div>
-                                <h4>Очень быстрая загрузка!</h4>
-                                <p>Все наши сайты загружаются очень быстро, используя CDN и оптимизированные изображения!</p>
+                                <h4>Очень быстрая загрузка</h4>
                             </div>
                         </div>
 
@@ -160,8 +157,7 @@
                                 <path d="M12 18H12.01" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                             <div>
-                                <h4>Адаптивны на телефон</h4>
-                                <p>Все сайты мы адаптируем на телефон и это уже входит в цену!</p>
+                                <h4>Адаптив под все устройства</h4>
                             </div>
                         </div>
 
@@ -171,52 +167,7 @@
                                 <path d="M21 21L16.65 16.65" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                             <div>
-                                <h4>SEO-оптимизация и структура под Google</h4>
-                                <p>Мы настраиваем базовое SEO: теги, структура, sitemap — чтобы сайт сразу индексировался и начинал приносить трафик.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M3 13H11V3H3V13Z" stroke-width="2"/>
-                                <path d="M13 21H21V11H13V21Z" stroke-width="2"/>
-                            </svg>
-                            <div>
-                                <h4>Настройка аналитики и целей</h4>
-                                <p>Подключаем Google Analytics и Pixel — вы сможете видеть, сколько заявок и звонков приходит с сайта.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <div>
-                                <h4>Формы лидов и интеграция с WhatsApp / Telegram</h4>
-                                <p>Все заявки с сайта идут сразу к вам в мессенджер или CRM — без потери ни одного лида.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke-width="2"/>
-                                <path d="M2 17L12 22L22 17" stroke-width="2"/>
-                                <path d="M2 12L12 17L22 12" stroke-width="2"/>
-                            </svg>
-                            <div>
-                                <h4>Уникальный дизайн под ваш бизнес</h4>
-                                <p>Мы не используем шаблоны — каждый сайт создаётся индивидуально под ваш стиль и задачи.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke-width="2"/>
-                                <path d="M14 2V8H20" stroke-width="2"/>
-                            </svg>
-                            <div>
-                                <h4>Правильные тексты, которые продают</h4>
-                                <p>Пишем тексты, которые объясняют вашу услугу простыми словами и повышают доверие клиентов.</p>
+                                <h4>SEO-оптимизация</h4>
                             </div>
                         </div>
 
@@ -226,13 +177,16 @@
                                 <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                             <div>
-                                <h4>Техническая поддержка 30 дней</h4>
-                                <p>После запуска мы остаёмся на связи — исправим, подскажем, обновим.</p>
+                                <h4>Поддержка 30 дней</h4>
                             </div>
                         </div>
                         </div>
                         
-                        <a href="#contacts" class="btn btn-primary btn-full">Заказать сайт</a>
+                        <button class="btn btn-outline btn-full" data-modal="serviceDetailsModal" data-service-type="site">
+                            Все преимущества (11)
+                        </button>
+                        
+                        <button class="btn btn-primary btn-full" data-modal="orderModal" data-service="Сайт под ключ">Заказать сайт</button>
                     </div>
                 </div>
 
@@ -243,7 +197,7 @@
                         <div class="service-left">
                             <h3 class="service-title">Бренд под ключ</h3>
                             <div class="service-price">
-                                <span class="price">от 90 000₽</span>
+                                <span class="price">от <span class="price-number">90 000</span>₽</span>
                                 <span class="service-duration">3-4 недели</span>
                             </div>
                         </div>
@@ -256,7 +210,6 @@
                             </svg>
                             <div>
                                 <h4>Фирменный стиль и айдентика</h4>
-                                <p>Разработка уникального визуального образа бренда с учетом целевой аудитории и рынка.</p>
                             </div>
                         </div>
 
@@ -267,7 +220,6 @@
                             </svg>
                             <div>
                                 <h4>Логотип и брендбук</h4>
-                                <p>Создание логотипа и полного руководства по использованию фирменного стиля.</p>
                             </div>
                         </div>
 
@@ -277,7 +229,6 @@
                             </svg>
                             <div>
                                 <h4>Позиционирование на рынке</h4>
-                                <p>Стратегическое определение места бренда на рынке и в сознании потребителей.</p>
                             </div>
                         </div>
 
@@ -289,7 +240,6 @@
                             </svg>
                             <div>
                                 <h4>Премиум-сайт</h4>
-                                <p>Разработка высококачественного сайта с уникальным дизайном и функционалом.</p>
                             </div>
                         </div>
 
@@ -302,7 +252,6 @@
                             </svg>
                             <div>
                                 <h4>Контент-стратегия</h4>
-                                <p>План создания и публикации контента для достижения бизнес-целей.</p>
                             </div>
                         </div>
 
@@ -312,12 +261,15 @@
                             </svg>
                             <div>
                                 <h4>Полный пакет бренда</h4>
-                                <p>Все включено — от концепции до реализации бренда под ключ.</p>
                             </div>
                         </div>
                         </div>
                         
-                        <a href="#contacts" class="btn btn-primary btn-full">Заказать бренд</a>
+                        <button class="btn btn-outline btn-full" data-modal="serviceDetailsModal" data-service-type="brand">
+                            Все преимущества (6)
+                        </button>
+                        
+                        <button class="btn btn-primary btn-full" data-modal="orderModal" data-service="Бренд под ключ">Заказать бренд</button>
                     </div>
                 </div>
             </div>
@@ -330,7 +282,7 @@
             <div class="section-header">
                 <div>
                     <h2 class="section-title">Наше портфолио</h2>
-                    <p class="section-subtitle">Кейсы, которыми мы гордимся</p>
+                    <p class="section-subtitle portfolio-subtitle">Кейсы, которыми мы гордимся</p>
                 </div>
             <div class="portfolio-filters">
                 <button class="filter-btn active" data-filter="all">Все проекты</button>
@@ -356,15 +308,31 @@
                 <div class="portfolio-track">
                     <!-- Case 1 -->
                     <div class="portfolio-item" data-category="restaurants">
-                        <div class="portfolio-image">
-                            <img src="" alt="Кейс ресторана">
-                        </div>
+                        <a href="https://yuramoscow.ru/" target="_blank" class="portfolio-image-link">
+                            <div class="portfolio-image">
+                                <img src="assets/images/yura_rest.jpg" alt="Кейс ресторана">
+                                <div class="portfolio-eye-badge">
+                                    <svg class="eye-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="circlePath" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/>
+                                        </defs>
+                                        <text class="circle-text">
+                                            <textPath href="#circlePath">СМОТРЕТЬ КАК • СМОТРЕТЬ КАК • </textPath>
+                                        </text>
+                                    </svg>
+                                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Ресторан "Вкусная история"</h3>
+                            <h3 class="portfolio-title">Ресторан "Yura"</h3>
                             <div class="portfolio-info">
                                 <div class="info-block">
                                     <h4>Задача</h4>
-                                    <p>Создать привлекательный сайт с онлайн-бронированием столиков и системой заказа доставки</p>
+                                    <p>Создать привлекательный сайт для демонстрации ресторана с онлайн-бронированием столиков</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Решение</h4>
@@ -372,7 +340,7 @@
                                 </div>
                                 <div class="info-block">
                                     <h4>Результат</h4>
-                                    <p><strong>+230%</strong> онлайн-заказов за 2 месяца</p>
+                                    <p><strong>+210%</strong> бронирований столиков за 2 месяца</p>
                                 </div>
                             </div>
                         </div>
@@ -380,15 +348,31 @@
 
                     <!-- Case 2 -->
                     <div class="portfolio-item" data-category="services">
-                        <div class="portfolio-image">
-                            <img src="" alt="Кейс юридической компании">
-                        </div>
+                        <a href="https://kelinlaw.ru/" target="_blank" class="portfolio-image-link">
+                            <div class="portfolio-image">
+                                <img class="portfolio-image-left" src="assets/images/kelin_law.jpg" alt="Кейс юридической компании">
+                                <div class="portfolio-eye-badge">
+                                    <svg class="eye-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="circlePath2" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/>
+                                        </defs>
+                                        <text class="circle-text">
+                                            <textPath href="#circlePath2">СМОТРЕТЬ КАК • СМОТРЕТЬ КАК • </textPath>
+                                        </text>
+                                    </svg>
+                                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Юридическая компания "Правовой центр"</h3>
+                            <h3 class="portfolio-title">Юридическая компания "Kelin"</h3>
                             <div class="portfolio-info">
                                 <div class="info-block">
                                     <h4>Задача</h4>
-                                    <p>Повысить доверие клиентов и увеличить количество консультаций через сайт</p>
+                                    <p>Повысить доверие клиентов и увеличить количество записей на консультацию через сайт</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Решение</h4>
@@ -404,23 +388,39 @@
 
                     <!-- Case 3 -->
                     <div class="portfolio-item" data-category="retail">
-                        <div class="portfolio-image">
-                            <img src="" alt="Кейс интернет-магазина">
-                        </div>
+                        <a href="https://udedamiti.ru/" target="_blank" class="portfolio-image-link">
+                            <div class="portfolio-image">
+                                <img class="portfolio-image-left" src="assets/images/ded_shop.jpg" alt="Кейс интернет-магазина">
+                                <div class="portfolio-eye-badge">
+                                    <svg class="eye-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="circlePath3" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/>
+                                        </defs>
+                                        <text class="circle-text">
+                                            <textPath href="#circlePath3">СМОТРЕТЬ КАК • СМОТРЕТЬ КАК • </textPath>
+                                        </text>
+                                    </svg>
+                                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Интернет-магазин "Modern Home"</h3>
+                            <h3 class="portfolio-title">Интернет-магазин металлоискателей "У Деда Мити"</h3>
                             <div class="portfolio-info">
                                 <div class="info-block">
                                     <h4>Задача</h4>
-                                    <p>Запустить интернет-магазин мебели с удобной навигацией и быстрым оформлением заказа</p>
+                                    <p>Увеличить онлайн-продажи металлоискателей и повысить доверие к бренду среди покупателей по всей России</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Решение</h4>
-                                    <p>Разработали интуитивный каталог с фильтрами, 3D-визуализацией товаров и корзину в 1 клик</p>
+                                    <p>Разработали масштабный интернет-магазин с подробными обзорами и автоматизированной обработкой заказов.</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Результат</h4>
-                                    <p><strong>+320%</strong> продаж за первый квартал</p>
+                                    <p><strong>+320%</strong> онлайн-продаж за первый квартал</p>
                                 </div>
                             </div>
                         </div>
@@ -428,11 +428,27 @@
 
                     <!-- Case 4 -->
                     <div class="portfolio-item" data-category="services">
-                        <div class="portfolio-image">
-                            <img src="" alt="Кейс фитнес-клуба">
-                        </div>
+                        <a href="https://evolution-fitness.ru/" target="_blank" class="portfolio-image-link">
+                            <div class="portfolio-image">
+                                <img src="assets/images/evo_club.jpg" alt="Кейс фитнес-клуба">
+                                <div class="portfolio-eye-badge">
+                                    <svg class="eye-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="circlePath4" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/>
+                                        </defs>
+                                        <text class="circle-text">
+                                            <textPath href="#circlePath4">СМОТРЕТЬ КАК • СМОТРЕТЬ КАК • </textPath>
+                                        </text>
+                                    </svg>
+                                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Фитнес-клуб "Energy Life"</h3>
+                            <h3 class="portfolio-title">Фитнес-клуб "Эволюция"</h3>
                             <div class="portfolio-info">
                                 <div class="info-block">
                                     <h4>Задача</h4>
@@ -452,19 +468,35 @@
 
                     <!-- Case 5 -->
                     <div class="portfolio-item" data-category="restaurants">
-                        <div class="portfolio-image">
-                            <img src="" alt="Кейс кофейни">
-                        </div>
+                        <a href="https://zerno.spb.ru/" target="_blank" class="portfolio-image-link">
+                            <div class="portfolio-image">
+                                <img src="assets/images/zerno_coffee.webp" class="portfolio-image-left" alt="Кейс кофейни">
+                                <div class="portfolio-eye-badge">
+                                    <svg class="eye-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="circlePath5" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/>
+                                        </defs>
+                                        <text class="circle-text">
+                                            <textPath href="#circlePath5">СМОТРЕТЬ КАК • СМОТРЕТЬ КАК • </textPath>
+                                        </text>
+                                    </svg>
+                                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Кофейня "Coffee Point"</h3>
+                            <h3 class="portfolio-title">Кофейня "Zerno"</h3>
                             <div class="portfolio-info">
                                 <div class="info-block">
                                     <h4>Задача</h4>
-                                    <p>Создать стильный сайт с программой лояльности и онлайн-заказом кофе с собой</p>
+                                    <p>Создать стильный сайт с программой лояльности для привлечения клиентов на точку</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Решение</h4>
-                                    <p>Разработали яркий сайт с мобильным приложением для заказов и системой баллов</p>
+                                    <p>Разработали яркий сайт с возможностью онлайн-заказов и системой баллов</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Результат</h4>
@@ -476,23 +508,39 @@
 
                     <!-- Case 6 -->
                     <div class="portfolio-item" data-category="retail">
-                        <div class="portfolio-image">
-                            <img src="" alt="Кейс магазина одежды">
-                        </div>
+                        <a href="https://sportshop62.ru/" target="_blank" class="portfolio-image-link">
+                            <div class="portfolio-image">
+                                <img src="assets/images/sport_shop.jpg" alt="Кейс магазина одежды">
+                                <div class="portfolio-eye-badge">
+                                    <svg class="eye-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="circlePath6" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/>
+                                        </defs>
+                                        <text class="circle-text">
+                                            <textPath href="#circlePath6">СМОТРЕТЬ КАК • СМОТРЕТЬ КАК • </textPath>
+                                        </text>
+                                    </svg>
+                                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Бутик "Fashion Style"</h3>
+                            <h3 class="portfolio-title">Интернет-магазин спортивных товаров "SportShop62"</h3>
                             <div class="portfolio-info">
                                 <div class="info-block">
                                     <h4>Задача</h4>
-                                    <p>Запустить премиальный интернет-магазин дизайнерской одежды с виртуальной примерочной</p>
+                                    <p>Запустить интернет-магазин спортивных товаров с удобным онлайн-каталогом</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Решение</h4>
-                                    <p>Создали элегантный сайт с AR-примеркой, удобными фильтрами и быстрым checkout</p>
+                                    <p>Сделали простой сайт с фильтрами по товарам, поддержкой корзины и онлайн-оплатой</p>
                                 </div>
                                 <div class="info-block">
                                     <h4>Результат</h4>
-                                    <p><strong>+410%</strong> конверсия в покупку</p>
+                                    <p><strong>+410%</strong> рост конверсии в покупку</p>
                                 </div>
                             </div>
                         </div>
@@ -500,11 +548,27 @@
 
                     <!-- Case 7 -->
                     <div class="portfolio-item" data-category="services">
-                        <div class="portfolio-image">
-                            <img src="" alt="Кейс стоматологии">
-                        </div>
+                        <a href="https://dentalclinic62.ru/" target="_blank" class="portfolio-image-link">
+                            <div class="portfolio-image">
+                                <img src="assets/images/denta_clinic.jpg" alt="Кейс стоматологии">
+                                <div class="portfolio-eye-badge">
+                                    <svg class="eye-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <path id="circlePath6" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/>
+                                        </defs>
+                                        <text class="circle-text">
+                                            <textPath href="#circlePath6">СМОТРЕТЬ КАК • СМОТРЕТЬ КАК • </textPath>
+                                        </text>
+                                    </svg>
+                                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                         <div class="portfolio-content">
-                            <h3 class="portfolio-title">Стоматология "Белая улыбка"</h3>
+                            <h3 class="portfolio-title">Стоматология "Expert Clinic"</h3>
                             <div class="portfolio-info">
                                 <div class="info-block">
                                     <h4>Задача</h4>
@@ -846,15 +910,10 @@
                             <textarea id="message" name="message" rows="4" placeholder="Опишите ваш бизнес и задачи..."></textarea>
                         </div>
 
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="privacy" required>
-                                <span>Я согласен с <a href="#" target="_blank">политикой конфиденциальности</a></span>
-                            </label>
-                            <span class="error-message"></span>
-                        </div>
+												<p class="form-privacy-text">*нажимая на кнопку, вы соглашаетесь на обработку <a href="#" target="_blank">персональных данных</a></p>
 
-                        <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+                <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+
                     </form>
                 </div>
 
@@ -1035,6 +1094,91 @@
                     <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27097 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.5953 1.99522 8.06579 2.16708 8.43376 2.48353C8.80173 2.79999 9.04207 3.23945 9.10999 3.72C9.23662 4.68007 9.47144 5.62273 9.80999 6.53C9.94454 6.88792 9.97366 7.27691 9.8939 7.65088C9.81415 8.02485 9.62886 8.36811 9.35999 8.64L8.08999 9.91C9.51355 12.4135 11.5864 14.4864 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9751 14.1858 16.3491 14.1061C16.7231 14.0263 17.1121 14.0555 17.47 14.19C18.3773 14.5286 19.3199 14.7634 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-form-container">
+            <button class="modal-close" aria-label="Закрыть">&times;</button>
+            <div class="modal-header">
+                <h2>Обсудим ваш проект?</h2>
+                <p>Оставьте заявку, и мы свяжемся с вами в течение 15 минут</p>
+            </div>
+            
+            <form class="modal-form" id="modalOrderForm">
+                <div class="modal-form-grid">
+                    <div class="form-group">
+                        <label for="modal-name">Ваше имя *</label>
+                        <input type="text" id="modal-name" name="name" required placeholder="Иван Иванов">
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-phone">Телефон *</label>
+                        <input type="tel" id="modal-phone" name="phone" required placeholder="+7 (___) ___-__-__">
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-email">Email</label>
+                        <input type="email" id="modal-email" name="email" placeholder="example@mail.com">
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-service">Какая услуга интересует?</label>
+                        <select id="modal-service" name="service">
+                            <option value="">Выберите услугу</option>
+                            <option value="site">Сайт под ключ (от 40 000₽)</option>
+                            <option value="brand">Бренд под ключ (от 90 000₽)</option>
+                            <option value="consultation">Консультация</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-message">Расскажите о проекте</label>
+                    <textarea id="modal-message" name="message" rows="4" placeholder="Опишите ваш бизнес и задачи..."></textarea>
+                </div>
+
+                <p class="form-privacy-text modal-form-privacy-text">*нажимая на кнопку, вы соглашаетесь на обработку <a href="#" target="_blank">персональных данных</a></p>
+
+                <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+            </form>
+            
+            <div class="modal-contacts">
+                <div class="modal-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27097 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.5953 1.99522 8.06579 2.16708 8.43376 2.48353C8.80173 2.79999 9.04207 3.23945 9.10999 3.72C9.23662 4.68007 9.47144 5.62273 9.80999 6.53C9.94454 6.88792 9.97366 7.27691 9.8939 7.65088C9.81415 8.02485 9.62886 8.36811 9.35999 8.64L8.08999 9.91C9.51355 12.4135 11.5864 14.4864 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9751 14.1858 16.3491 14.1061C16.7231 14.0263 17.1121 14.0555 17.47 14.19C18.3773 14.5286 19.3199 14.7634 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                </div>
+                <div class="modal-social-links">
+                    <a href="https://wa.me/79991234567" target="_blank" aria-label="WhatsApp" class="modal-social-link whatsapp">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/rxtagency" target="_blank" aria-label="Telegram" class="modal-social-link telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Details Modal -->
+    <div class="modal" id="serviceDetailsModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-details-container">
+            <button class="modal-close" aria-label="Закрыть">&times;</button>
+            <div class="modal-details-content" id="serviceDetailsContent">
+                <!-- Content will be injected by JavaScript -->
+            </div>
         </div>
     </div>
 

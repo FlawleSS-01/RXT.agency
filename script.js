@@ -2,6 +2,37 @@
 // RXT Agency - Main JavaScript
 // ============================================
 
+// Global modal functions
+function showModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        // Save current scroll position
+        const scrollY = window.scrollY;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        // Restore scroll position
+        const scrollY = document.body.style.top;
+        
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+}
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -151,8 +182,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!sliderTrack) return;
         
         const visibleItems = getVisibleItems();
-        const slideWidth = 100;
-        sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        
+        // Calculate offset based on actual element width + gap
+        if (visibleItems.length > 0) {
+            const firstItem = visibleItems[0];
+            const containerWidth = sliderTrack.parentElement.offsetWidth;
+            const gap = parseFloat(getComputedStyle(sliderTrack).gap) || 0;
+            
+            // Each slide takes 100% of container + gap
+            const slideOffset = containerWidth + gap;
+            const translateValue = currentSlide * slideOffset;
+            
+            sliderTrack.style.transform = `translateX(-${translateValue}px)`;
+        }
         
         // Update all button states
         const buttons = [
@@ -195,6 +237,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Initialize slider
         updateSlider();
+        
+        // Update slider on window resize
+        window.addEventListener('resize', updateSlider);
         
         // Touch swipe for mobile
         let touchStartX = 0;
@@ -313,13 +358,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // Validate checkbox
-            if (field.type === 'checkbox' && field.hasAttribute('required') && !field.checked) {
-                formGroup.classList.add('error');
-                if (errorMessage) errorMessage.textContent = 'Необходимо согласие с политикой';
-                return false;
-            }
-            
             return true;
         }
         
@@ -388,26 +426,116 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // Modal
     // ============================================
-    function showModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    }
     
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+    // Service details data
+    const serviceDetails = {
+        site: {
+            title: 'Сайт под ключ',
+            price: 'от 40 000₽',
+            duration: '1,5-3 недели',
+            features: [
+                { title: 'Домен и хостинг в подарок!', description: 'Мы не берем дополнительные средства за домен, хостинг и их подключение!', highlight: true },
+                { title: 'Защита для сайта', description: 'Мы шифруем все сайты с помощью SSL сертификата и добавляем HTTPS на сайт!' },
+                { title: 'Очень быстрая загрузка!', description: 'Все наши сайты загружаются очень быстро, используя CDN и оптимизированные изображения!' },
+                { title: 'Адаптивны на телефон', description: 'Все сайты мы адаптируем на телефон и это уже входит в цену!' },
+                { title: 'SEO-оптимизация и структура под Google', description: 'Мы настраиваем базовое SEO: теги, структура, sitemap — чтобы сайт сразу индексировался и начинал приносить трафик.' },
+                { title: 'Настройка аналитики и целей', description: 'Подключаем Google Analytics и Pixel — вы сможете видеть, сколько заявок и звонков приходит с сайта.' },
+                { title: 'Формы лидов и интеграция с WhatsApp / Telegram', description: 'Все заявки с сайта идут сразу к вам в мессенджер или CRM — без потери ни одного лида.' },
+                { title: 'Уникальный дизайн под ваш бизнес', description: 'Мы не используем шаблоны — каждый сайт создаётся индивидуально под ваш стиль и задачи.' },
+                { title: 'Правильные тексты, которые продают', description: 'Пишем тексты, которые объясняют вашу услугу простыми словами и повышают доверие клиентов.' },
+                { title: 'Техническая поддержка 30 дней', description: 'После запуска мы остаёмся на связи — исправим, подскажем, обновим.' },
+                { title: 'Договор и юридическая чистота', description: 'Заключаем официальный договор с каждой компанией. Все работы проводятся на прозрачной, безопасной юридической основе.'},
+            ]
+        },
+        brand: {
+            title: 'Бренд под ключ',
+            price: 'от 90 000₽',
+            duration: '3-4 недели',
+            features: [
+                { title: 'Фирменный стиль и айдентика', description: 'Разработка уникального визуального образа бренда с учетом целевой аудитории и рынка.' },
+                { title: 'Логотип и брендбук', description: 'Создание логотипа и полного руководства по использованию фирменного стиля.' },
+                { title: 'Позиционирование на рынке', description: 'Стратегическое определение места бренда на рынке и в сознании потребителей.' },
+                { title: 'Премиум-сайт', description: 'Разработка высококачественного сайта с уникальным дизайном и функционалом.' },
+                { title: 'Контент-стратегия', description: 'План создания и публикации контента для достижения бизнес-целей.' },
+                { title: 'Полный пакет бренда', description: 'Все включено — от концепции до реализации бренда под ключ.' }
+            ]
         }
-    }
+    };
+    
+    // Open modal from buttons with data-modal attribute
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = btn.dataset.modal;
+            const service = btn.dataset.service;
+            const serviceType = btn.dataset.serviceType;
+            
+            // Handle service details modal
+            if (modalId === 'serviceDetailsModal' && serviceType) {
+                const details = serviceDetails[serviceType];
+                const contentDiv = document.getElementById('serviceDetailsContent');
+                
+                if (details && contentDiv) {
+                    let featuresHTML = details.features.map(feature => `
+                        <div class="modal-detail-item${feature.highlight ? ' highlight' : ''}">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div>
+                                <h4>${feature.title}</h4>
+                                <p>${feature.description}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    contentDiv.innerHTML = `
+                        <h2>${details.title}</h2>
+                        <div class="service-info">
+                            <div class="price-info">${details.price}</div>
+                            <div class="duration-info">Срок: ${details.duration}</div>
+                        </div>
+                        <div class="modal-details-list">
+                            ${featuresHTML}
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="closeModal('serviceDetailsModal'); setTimeout(() => showModal('orderModal'), 300);">
+                            Заказать
+                        </button>
+                    `;
+                }
+            }
+            
+            // Pre-fill service if data-service is provided
+            if (service && modalId === 'orderModal') {
+                const serviceSelect = document.getElementById('modal-service');
+                if (serviceSelect) {
+                    const option = Array.from(serviceSelect.options).find(opt => 
+                        opt.text.includes(service)
+                    );
+                    if (option) {
+                        serviceSelect.value = option.value;
+                    }
+                }
+            }
+            
+            showModal(modalId);
+        });
+    });
     
     // Close modal on close button click
     document.querySelectorAll('.modal-close').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const modal = e.target.closest('.modal');
+            if (modal) {
+                closeModal(modal.id);
+            }
+        });
+    });
+    
+    // Close modal on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', () => {
+            const modal = overlay.closest('.modal');
             if (modal) {
                 closeModal(modal.id);
             }
@@ -431,6 +559,141 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    
+    // ============================================
+    // Modal Order Form Validation & Submission
+    // ============================================
+    const modalOrderForm = document.getElementById('modalOrderForm');
+    
+    if (modalOrderForm) {
+        // Phone mask for modal
+        const modalPhoneInput = document.getElementById('modal-phone');
+        if (modalPhoneInput) {
+            modalPhoneInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.startsWith('7')) {
+                    value = value.substring(1);
+                } else if (value.startsWith('8')) {
+                    value = value.substring(1);
+                }
+                
+                let formatted = '+7 ';
+                if (value.length > 0) {
+                    formatted += '(' + value.substring(0, 3);
+                }
+                if (value.length >= 4) {
+                    formatted += ') ' + value.substring(3, 6);
+                }
+                if (value.length >= 7) {
+                    formatted += '-' + value.substring(6, 8);
+                }
+                if (value.length >= 9) {
+                    formatted += '-' + value.substring(8, 10);
+                }
+                
+                e.target.value = formatted;
+            });
+        }
+        
+        // Form validation function (reuse from main form)
+        function validateModalField(field) {
+            const formGroup = field.closest('.form-group');
+            const errorMessage = formGroup.querySelector('.error-message');
+            
+            formGroup.classList.remove('error');
+            if (errorMessage) errorMessage.textContent = '';
+            
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                formGroup.classList.add('error');
+                if (errorMessage) errorMessage.textContent = 'Это поле обязательно для заполнения';
+                return false;
+            }
+            
+            if (field.type === 'email' && field.value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(field.value)) {
+                    formGroup.classList.add('error');
+                    if (errorMessage) errorMessage.textContent = 'Введите корректный email';
+                    return false;
+                }
+            }
+            
+            if (field.type === 'tel' && field.value) {
+                const phoneRegex = /\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}/;
+                if (!phoneRegex.test(field.value)) {
+                    formGroup.classList.add('error');
+                    if (errorMessage) errorMessage.textContent = 'Введите корректный телефон';
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        
+        // Real-time validation for modal form
+        const modalFormFields = modalOrderForm.querySelectorAll('input, select, textarea');
+        modalFormFields.forEach(field => {
+            field.addEventListener('blur', () => validateModalField(field));
+            field.addEventListener('input', () => {
+                const formGroup = field.closest('.form-group');
+                if (formGroup.classList.contains('error')) {
+                    validateModalField(field);
+                }
+            });
+        });
+        
+        // Modal form submission
+        modalOrderForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate all fields
+            let isValid = true;
+            modalFormFields.forEach(field => {
+                if (!validateModalField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Collect form data
+            const formData = new FormData(modalOrderForm);
+            const data = Object.fromEntries(formData);
+            
+            // Disable submit button
+            const submitBtn = modalOrderForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Close order modal
+                closeModal('orderModal');
+                
+                // Show success modal
+                setTimeout(() => {
+                    showModal('successModal');
+                }, 300);
+                
+                // Reset form
+                modalOrderForm.reset();
+                
+                console.log('Modal form submitted:', data);
+                
+            } catch (error) {
+                alert('Произошла ошибка при отправке формы. Попробуйте позже.');
+                console.error('Form submission error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+    }
     
     // ============================================
     // Social Widget Toggle
