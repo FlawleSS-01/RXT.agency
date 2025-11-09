@@ -297,30 +297,32 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         // Phone mask
         const phoneInput = document.getElementById('phone');
-        phoneInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.startsWith('7')) {
-                value = value.substring(1);
-            } else if (value.startsWith('8')) {
-                value = value.substring(1);
-            }
-            
-            let formatted = '+7 ';
-            if (value.length > 0) {
-                formatted += '(' + value.substring(0, 3);
-            }
-            if (value.length >= 4) {
-                formatted += ') ' + value.substring(3, 6);
-            }
-            if (value.length >= 7) {
-                formatted += '-' + value.substring(6, 8);
-            }
-            if (value.length >= 9) {
-                formatted += '-' + value.substring(8, 10);
-            }
-            
-            e.target.value = formatted;
-        });
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.startsWith('7')) {
+                    value = value.substring(1);
+                } else if (value.startsWith('8')) {
+                    value = value.substring(1);
+                }
+                
+                let formatted = '+7 ';
+                if (value.length > 0) {
+                    formatted += '(' + value.substring(0, 3);
+                }
+                if (value.length >= 4) {
+                    formatted += ') ' + value.substring(3, 6);
+                }
+                if (value.length >= 7) {
+                    formatted += '-' + value.substring(6, 8);
+                }
+                if (value.length >= 9) {
+                    formatted += '-' + value.substring(8, 10);
+                }
+                
+                e.target.value = formatted;
+            });
+        }
         
         // Form validation
         function validateField(field) {
@@ -914,51 +916,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Auto-play reviews slider
-    let reviewsAutoPlay = setInterval(() => {
-        if (currentReviewSlide < totalReviewSlides - 1) {
-            currentReviewSlide++;
-        } else {
-            currentReviewSlide = 0;
-        }
-        updateReviewsSlider();
-    }, 5000);
-    
-    // Pause on hover
-    if (reviewsTrack) {
-        reviewsTrack.addEventListener('mouseenter', () => {
-            clearInterval(reviewsAutoPlay);
-        });
-        
-        reviewsTrack.addEventListener('mouseleave', () => {
-            reviewsAutoPlay = setInterval(() => {
-                if (currentReviewSlide < totalReviewSlides - 1) {
-                    currentReviewSlide++;
-                } else {
-                    currentReviewSlide = 0;
-                }
-                updateReviewsSlider();
-            }, 5000);
-        });
-    }
-    
-    // Update on window resize
-    window.addEventListener('resize', debounce(() => {
-        updateReviewsSlider();
-    }, 250));
-    
     // ============================================
     // Console message
     // ============================================
     console.log('%c🚀 RXT Agency', 'font-size: 20px; font-weight: bold; color: #a129f3;');
-    console.log('%cСайт разработан RXT Agency', 'font-size: 12px; color: #999;');
-    
-    // ============================================
-    // Page Load Complete
-    // ============================================
-    window.addEventListener('load', () => {
-        document.body.classList.add('loaded');
-        console.log('✅ Страница полностью загружена');
-    });
-    
+    console.log('%cСайт разработан RXT Agency', 'font-size: 12px; color: #999;');    
 });
