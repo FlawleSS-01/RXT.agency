@@ -719,55 +719,58 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // Scroll Reveal Animation
     // ============================================
-    const observerOptions = {
-        threshold: 0.05,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Optional: unobserve after animation
-                // observer.unobserve(entry.target);
-            }
+    // Skip scroll reveal on agreement page
+    if (!document.querySelector('.agreement-page')) {
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: unobserve after animation
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach(el => observer.observe(el));
+        
+        // Add scroll-reveal class to sections
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.classList.add('scroll-reveal');
+            observer.observe(section);
         });
-    }, observerOptions);
-    
-    // Observe elements
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    revealElements.forEach(el => observer.observe(el));
-    
-    // Add scroll-reveal class to sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.classList.add('scroll-reveal');
-        observer.observe(section);
-    });
-    
-    // Observe service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.1}s`;
-        card.classList.add('scroll-reveal');
-        observer.observe(card);
-    });
-    
-    // Observe process steps
-    const processSteps = document.querySelectorAll('.process-step');
-    processSteps.forEach((step, index) => {
-        step.style.transitionDelay = `${index * 0.1}s`;
-        step.classList.add('scroll-reveal');
-        observer.observe(step);
-    });
-    
-    // Observe review cards
-    const allReviewCards = document.querySelectorAll('.review-card');
-    allReviewCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.1}s`;
-        card.classList.add('scroll-reveal');
-        observer.observe(card);
-    });
+        
+        // Observe service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            card.classList.add('scroll-reveal');
+            observer.observe(card);
+        });
+        
+        // Observe process steps
+        const processSteps = document.querySelectorAll('.process-step');
+        processSteps.forEach((step, index) => {
+            step.style.transitionDelay = `${index * 0.1}s`;
+            step.classList.add('scroll-reveal');
+            observer.observe(step);
+        });
+        
+        // Observe review cards
+        const allReviewCards = document.querySelectorAll('.review-card');
+        allReviewCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            card.classList.add('scroll-reveal');
+            observer.observe(card);
+        });
+    }
     
     // ============================================
     // Lazy Loading Images
@@ -823,7 +826,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const reviewsDots = document.querySelector('.reviews-dots');
     
     let currentReviewSlide = 0;
-    const reviewsPerView = window.innerWidth > 768 ? 2 : 1;
+    const reviewsPerView = window.innerWidth > 1070 ? 2 : 1;
     const totalReviewSlides = Math.ceil(reviewCards.length / reviewsPerView);
     
     // Create dots
