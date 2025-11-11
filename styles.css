@@ -2356,12 +2356,12 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-md);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .modal.active {
   display: flex;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .modal-content {

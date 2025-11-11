@@ -1,0 +1,18 @@
+/* TEAM */
+
+Developer & Designer: RXT Agency
+Site: https://rxt.agency
+Email: rxt.agency@gmail.com
+Location: Russia
+
+/* SITE */
+
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: Formspree, Google Fonts
+Software: Visual Studio Code
+Language: Russian
+
+/* THANKS */
+
+To all our clients for trusting us with their projects!
+

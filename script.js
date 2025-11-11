@@ -402,17 +402,27 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Отправка...';
             
             try {
-                // Simulate API call (replace with actual endpoint)
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                // Send to Formspree
+                const response = await fetch('https://formspree.io/f/xldaepwk', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
                 
-                // Show success modal
-                showModal('successModal');
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Log data (for development)
-                console.log('Form submitted:', data);
+                if (response.ok) {
+                    // Show success modal
+                    showModal('successModal');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Log data (for development)
+                    console.log('Form submitted successfully:', data);
+                } else {
+                    throw new Error('Form submission failed');
+                }
                 
             } catch (error) {
                 alert('Произошла ошибка при отправке формы. Попробуйте позже.');
@@ -671,21 +681,31 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Отправка...';
             
             try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                // Send to Formspree
+                const response = await fetch('https://formspree.io/f/xldaepwk', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
                 
-                // Close order modal
-                closeModal('orderModal');
-                
-                // Show success modal
-                setTimeout(() => {
-                    showModal('successModal');
-                }, 300);
-                
-                // Reset form
-                modalOrderForm.reset();
-                
-                console.log('Modal form submitted:', data);
+                if (response.ok) {
+                    // Close order modal
+                    closeModal('orderModal');
+                    
+                    // Show success modal
+                    setTimeout(() => {
+                        showModal('successModal');
+                    }, 300);
+                    
+                    // Reset form
+                    modalOrderForm.reset();
+                    
+                    console.log('Modal form submitted successfully:', data);
+                } else {
+                    throw new Error('Form submission failed');
+                }
                 
             } catch (error) {
                 alert('Произошла ошибка при отправке формы. Попробуйте позже.');

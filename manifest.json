@@ -1,0 +1,23 @@
+{
+  "name": "RXT Agency - Разработка сайтов",
+  "short_name": "RXT Agency",
+  "description": "Создаём сайты, которые приносят клиентов! Разработка за 14 дней с гарантией результата",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "ru-RU",
+  "dir": "ltr",
+  "scope": "/"
+}
+
